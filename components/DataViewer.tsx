@@ -36,29 +36,76 @@ export default function DataViewer() {
 
     const keys = Object.keys(data[0]);
 
+    const formatCellValue = (value: any): string => {
+      if (value === null || value === undefined) {
+        return '';
+      }
+      if (typeof value === 'object') {
+        try {
+          return JSON.stringify(value, null, 2);
+        } catch {
+          return String(value);
+        }
+      }
+      return String(value);
+    };
+
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            {keys.map((key) => (
-              <th key={key}>{key}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item, idx) => (
-            <tr key={idx}>
+      <div className="table-container">
+        <table className="table">
+          <thead>
+            <tr>
               {keys.map((key) => (
-                <td key={key}>
-                  {typeof item[key] === 'object' 
-                    ? JSON.stringify(item[key])
-                    : String(item[key])}
-                </td>
+                <th key={key} title={key}>{key}</th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.map((item, idx) => (
+              <tr key={idx}>
+                {keys.map((key) => {
+                  const value = item[key];
+                  const displayValue = formatCellValue(value);
+                  const isLongValue = displayValue.length > 100;
+                  
+                  return (
+                    <td 
+                      key={key} 
+                      title={isLongValue ? displayValue : undefined}
+                      style={{ 
+                        maxWidth: '300px',
+                        wordBreak: 'break-word',
+                        whiteSpace: isLongValue ? 'pre-wrap' : 'normal'
+                      }}
+                    >
+                      {isLongValue ? (
+                        <details>
+                          <summary style={{ cursor: 'pointer', color: '#667eea' }}>
+                            Ver contenido ({displayValue.length} caracteres)
+                          </summary>
+                          <pre style={{ 
+                            marginTop: '0.5rem', 
+                            padding: '0.5rem', 
+                            background: '#f7fafc', 
+                            borderRadius: '4px',
+                            overflow: 'auto',
+                            maxHeight: '200px',
+                            fontSize: '0.875rem'
+                          }}>
+                            {displayValue}
+                          </pre>
+                        </details>
+                      ) : (
+                        displayValue
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   };
 

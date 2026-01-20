@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "init-db": "node --loader ts-node/esm scripts/init-db.ts || echo 'Ejecuta POST /api/init desde la aplicación web para inicializar la BD'",
-    "test-mongodb": "node --loader ts-node/esm scripts/test-mongodb.ts || echo 'Ejecuta GET /api/test-connection desde la aplicación web para probar MongoDB'"
+    "test-mongodb": "node --loader ts-node/esm scripts/test-mongodb.ts || echo 'Ejecuta GET /api/test-connection desde la aplicación web para probar MongoDB'",
+    "reset-etl": "node --loader ts-node/esm scripts/reset-etl.ts || echo 'Ejecuta POST /api/etl/reset desde la aplicación web para resetear el ETL'"
   },
   "dependencies": {
     "next": "^15.0.0",

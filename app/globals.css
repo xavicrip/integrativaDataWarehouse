@@ -82,10 +82,20 @@ code {
   background: #e53e3e;
 }
 
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 600px;
+  margin-top: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
+  min-width: 600px;
 }
 
 .table th,
@@ -93,16 +103,36 @@ code {
   padding: 0.75rem;
   text-align: left;
   border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .table th {
   background: #f7fafc;
   font-weight: 600;
   color: #2d3748;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table td {
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 300px;
 }
 
 .table tr:hover {
   background: #f7fafc;
+}
+
+/* Para valores largos, permitir scroll horizontal en la celda */
+.table td:has(> pre),
+.table td:has(> code) {
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .status-badge {

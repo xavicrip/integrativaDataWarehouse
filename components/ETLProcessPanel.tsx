@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import ResetETLButton from './ResetETLButton';
 
 interface ETLProcessPanelProps {
   onComplete?: () => void;
@@ -120,17 +121,28 @@ export default function ETLProcessPanel({ onComplete }: ETLProcessPanelProps) {
     return badges[type] || '';
   };
 
+  const handleReset = () => {
+    // Resetear el estado de los procesos después de resetear ETL
+    setProcesses(ETL_PROCESSES.map(p => ({ ...p, id: `process-${Date.now()}-${Math.random()}`, status: undefined, recordsProcessed: undefined, result: undefined })));
+    if (onComplete) {
+      onComplete();
+    }
+  };
+
   return (
     <div className="card">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
         <h2>Procesos ETL</h2>
-        <button 
-          className="button button-success" 
-          onClick={executeAll}
-          disabled={runningProcess !== null}
-        >
-          Ejecutar Todos
-        </button>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <ResetETLButton onReset={handleReset} />
+          <button 
+            className="button button-success" 
+            onClick={executeAll}
+            disabled={runningProcess !== null}
+          >
+            Ejecutar Todos
+          </button>
+        </div>
       </div>
 
       <div style={{ display: 'grid', gap: '1rem' }}>
