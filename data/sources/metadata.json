@@ -1,0 +1,88 @@
+{
+  "source": "sales_system",
+  "version": "2.1.0",
+  "lastUpdated": "2024-01-25T10:00:00Z",
+  "schema": {
+    "products": {
+      "table": "products",
+      "fields": [
+        {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "description": "Identificador único del producto"
+        },
+        {
+          "name": "product_name",
+          "type": "string",
+          "maxLength": 255,
+          "description": "Nombre del producto"
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "enum": ["Electronics", "Furniture", "Accessories"],
+          "description": "Categoría del producto"
+        },
+        {
+          "name": "price",
+          "type": "decimal",
+          "precision": 10,
+          "scale": 2,
+          "description": "Precio unitario en USD"
+        },
+        {
+          "name": "quantity",
+          "type": "integer",
+          "description": "Cantidad disponible en inventario"
+        },
+        {
+          "name": "created_at",
+          "type": "date",
+          "description": "Fecha de creación del registro"
+        }
+      ],
+      "indexes": ["id", "category"],
+      "constraints": {
+        "price": "CHECK (price > 0)",
+        "quantity": "CHECK (quantity >= 0)"
+      }
+    },
+    "customers": {
+      "table": "customers",
+      "fields": [
+        {
+          "name": "customerId",
+          "type": "string",
+          "primaryKey": true,
+          "pattern": "^CUST[0-9]{3}$",
+          "description": "Identificador único del cliente"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "maxLength": 100,
+          "description": "Nombre completo del cliente"
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "format": "email",
+          "description": "Correo electrónico del cliente"
+        }
+      ]
+    }
+  },
+  "dataQuality": {
+    "completeness": 0.98,
+    "accuracy": 0.95,
+    "consistency": 0.97,
+    "timeliness": "daily"
+  },
+  "lineage": {
+    "sourceSystem": "ERP_Sales",
+    "extractionMethod": "API_REST",
+    "frequency": "daily",
+    "retention": "7_years"
+  }
+}

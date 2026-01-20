@@ -1,0 +1,33 @@
+{
+  "name": "data-warehouse-etl",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "init-db": "node --loader ts-node/esm scripts/init-db.ts || echo 'Ejecuta POST /api/init desde la aplicación web para inicializar la BD'",
+    "test-mongodb": "node --loader ts-node/esm scripts/test-mongodb.ts || echo 'Ejecuta GET /api/test-connection desde la aplicación web para probar MongoDB'"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "mongodb": "^6.3.0",
+    "jose": "^5.2.0",
+    "xml2js": "^0.6.2",
+    "csv-parse": "^5.5.3",
+    "date-fns": "^3.0.0",
+    "recharts": "^2.10.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/xml2js": "^0.4.14",
+    "typescript": "^5.3.3",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^15.0.0"
+  }
+}

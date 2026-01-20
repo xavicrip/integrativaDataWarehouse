@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders>
+  <order>
+    <orderId>ORD001</orderId>
+    <customerId>CUST001</customerId>
+    <orderDate>2024-01-20</orderDate>
+    <items>
+      <item>
+        <productId>1</productId>
+        <productName>Laptop Pro</productName>
+        <quantity>2</quantity>
+        <unitPrice>1299.99</unitPrice>
+        <total>2599.98</total>
+      </item>
+      <item>
+        <productId>2</productId>
+        <productName>Wireless Mouse</productName>
+        <quantity>5</quantity>
+        <unitPrice>29.99</unitPrice>
+        <total>149.95</total>
+      </item>
+    </items>
+    <totalAmount>2749.93</totalAmount>
+    <status>completed</status>
+  </order>
+  <order>
+    <orderId>ORD002</orderId>
+    <customerId>CUST002</customerId>
+    <orderDate>2024-01-21</orderDate>
+    <items>
+      <item>
+        <productId>3</productId>
+        <productName>Office Chair</productName>
+        <quantity>1</quantity>
+        <unitPrice>199.99</unitPrice>
+        <total>199.99</total>
+      </item>
+    </items>
+    <totalAmount>199.99</totalAmount>
+    <status>pending</status>
+  </order>
+  <order>
+    <orderId>ORD003</orderId>
+    <customerId>CUST003</customerId>
+    <orderDate>2024-01-22</orderDate>
+    <items>
+      <item>
+        <productId>4</productId>
+        <productName>Desk Lamp</productName>
+        <quantity>3</quantity>
+        <unitPrice>49.99</unitPrice>
+        <total>149.97</total>
+      </item>
+      <item>
+        <productId>5</productId>
+        <productName>USB Cable</productName>
+        <quantity>10</quantity>
+        <unitPrice>9.99</unitPrice>
+        <total>99.90</total>
+      </item>
+    </items>
+    <totalAmount>249.87</totalAmount>
+    <status>completed</status>
+  </order>
+</orders>

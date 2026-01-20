@@ -1,0 +1,52 @@
+{
+  "customers": [
+    {
+      "customerId": "CUST001",
+      "name": "Juan Pérez",
+      "email": "juan.perez@example.com",
+      "phone": "+593 99 123 4567",
+      "address": {
+        "street": "Av. Principal 123",
+        "city": "Quito",
+        "country": "Ecuador"
+      },
+      "registrationDate": "2023-06-15T10:30:00Z",
+      "preferences": {
+        "newsletter": true,
+        "language": "es"
+      }
+    },
+    {
+      "customerId": "CUST002",
+      "name": "María González",
+      "email": "maria.gonzalez@example.com",
+      "phone": "+593 98 765 4321",
+      "address": {
+        "street": "Calle Secundaria 456",
+        "city": "Guayaquil",
+        "country": "Ecuador"
+      },
+      "registrationDate": "2023-07-20T14:15:00Z",
+      "preferences": {
+        "newsletter": false,
+        "language": "es"
+      }
+    },
+    {
+      "customerId": "CUST003",
+      "name": "Carlos Rodríguez",
+      "email": "carlos.rodriguez@example.com",
+      "phone": "+593 97 111 2233",
+      "address": {
+        "street": "Boulevard Norte 789",
+        "city": "Cuenca",
+        "country": "Ecuador"
+      },
+      "registrationDate": "2023-08-10T09:00:00Z",
+      "preferences": {
+        "newsletter": true,
+        "language": "en"
+      }
+    }
+  ]
+}
